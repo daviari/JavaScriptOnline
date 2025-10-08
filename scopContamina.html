@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope e contaminazione</title>
+</head>
+<body>
+   <script>
+
+    let messaggio = "globale";
+    function mostraMessaggio() {
+        let messaggio = "locale";
+        console.log("Messaggio dentro: "+messaggio);
+    }
+    mostraMessaggio();
+    console.log("Messaggio fuori: "+messaggio);
+
+    (function() {
+        var segreto = '12345';
+        console.log("Segreto dentro: "+segreto);
+    }) ();
+
+    console.log("Segreto fuori: "+segreto);
+
+   </script> 
+</body>
+</html>
