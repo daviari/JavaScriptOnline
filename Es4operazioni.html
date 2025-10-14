@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio Le 4 Operazioni</title>
+</head>
+<body>
+    <script>
+        function calcola(operazione, num1, num2) {
+            // arguments è un oggetto array-like che contiene tutti i valori passati alla funzione
+            var operazione = arguments[0]; // Il primo argomento indica l'operazione da eseguire
+            var result = 0; // Variabile per il risultato
+
+            // Ciclo su tutti gli argomenti a partire dal secondo (indice 1)
+            for (var i = 1; i < arguments.length; i++) {
+                // Uso switch per scegliere l'operazione
+                switch (operazione) {
+                    case '+':
+                        // Somma tutti gli argomenti
+                        result += arguments[i];
+                        break;
+                    case '-':
+                        // Sottrae ogni argomento dal risultato
+                        result -= arguments[i];
+                        break;
+                    case '*':
+                        // Moltiplica tutti gli argomenti
+                        result *= arguments[i];
+                        break;
+                    case '/':
+                        // Divide il risultato per ogni argomento
+                        result /= arguments[i];
+                        break;
+                    default:
+                        // Se l'operazione non è riconosciuta, restituisce 0
+                        result = 0;
+                }
+            }
+            return result;
+        }
+
+        console.log(calcola('+', 2, 3, 4)); // Stampa 9
+        console.log(calcola('-', 10, 2, 3)); // Stampa -15 perché 0 - 10 - 2 - 3 = -15
+        console.log(calcola('*', 2, 3, 4)); // Stampa 0 perché 0 * qualsiasi cosa = 0
+        console.log(calcola('/', 100, 2, 5)); // Stampa 0 perché 0 / qualsiasi cosa = 0
+    </script>
+</body>
+
+</html>

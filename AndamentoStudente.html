@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andamento dello studente</title>
+</head>
+<body>
+    <script>
+        function confrontoMedie(mediaPrimo, ...votiSecondo) {
+            var somma = 0;
+            for (var i = 0; i < votiSecondo.length; i++) {
+                somma += votiSecondo[i];
+            }
+            var mediaSecondo = somma / votiSecondo.length;
+
+            if (mediaSecondo > mediaPrimo) {
+                return "La media del secondo quadrimestre è migliorata (" + mediaSecondo + ") rispetto al primo (" + mediaPrimo + ")";
+            } else if (mediaSecondo < mediaPrimo) {
+                return "La media del secondo quadrimestre è peggiorata (" + mediaSecondo + ") rispetto al primo (" + mediaPrimo + ")";
+            } else {
+                return "La media del secondo quadrimestre è uguale a quella del primo (" + mediaSecondo + ")";
+            }
+        }
+
+        var mediaPrimo = parseFloat(prompt("Inserisci la media del primo quadrimestre:"));
+        var votiSecondo = [];
+        var n = parseFloat(prompt("Quanti voti hai nel secondo quadrimestre?"));
+        votiSecondo.length = n;
+        for (var i = 0; i < n; i++) {
+            votiSecondo[i] = parseFloat(prompt("Inserisci il voto n." + (i+1) + " : "));
+        }
+        var risultato = confrontoMedie(mediaPrimo, ...votiSecondo);
+        console.log(risultato);
+
+    </script>
+</body>
+</html>
