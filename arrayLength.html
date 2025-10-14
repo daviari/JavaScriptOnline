@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        var days = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica'];
+        // days è un array con 7 elementi
+
+        console.log(days.length); // la proprietà length indica il numero di elementi all'interno dell'array
+
+        days[22] = 'test'; // Aggiungo un elemento all'indice 22
+        console.log(days.length); // length diventa 23
+        console.log(days); // L'array ora ha molti elementi vuoti (undefined) tra l'indice 7 e 21
+
+        days.length = 7; // Imposto manualmente la lunghezza a 7
+        console.log(days); // Gli elementi dopo il settimo vengono eliminati e si ritorna all'array originale
+    </script>
+</body>
+</html>
