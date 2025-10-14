@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array reference</title>
+</head>
+<body>
+    <script>
+        var days = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica']; 
+        // days è un array di stringhe che rappresenta i giorni della settimana
+
+        var daysCopy = days; // daysCopy è una copia per riferimento e non una copia indipendente
+        console.log(daysCopy); // Stampa l'array originale
+
+        daysCopy[0] = 'Monday'; // Modifica il primo elemento nel array daysCopy
+        console.log(days); // Anche days viene modificato, perché daysCopy punta allo stesso array
+        console.log(daysCopy); // Stampa l'array modificato
+
+        var myNum = 10; // myNum è un numero
+        var num2 = myNum; // num2 riceve il valore di myNum
+        num2 = 4; // Modifica num2 e non influenza myNum
+        console.log(myNum); // Stampa 10
+        console.log(num2); // Stampa 4
+
+    </script>
+</body>
+</html>

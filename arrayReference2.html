@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array reference 2</title>
+</head>
+<body>
+    <script>
+        // Leggi in input 7 valori e memorizzali nell'array incassi1
+        var incassi1 = [];
+        for (var i = 0; i < 7; i++) {
+            var valore = parseInt(prompt("Inserisci l'incasso del giorno " + (i+1)));
+            incassi1[i] = valore;
+        }
+        console.log("incassi settimana 1:", incassi1);
+
+        // copia del primo array e riduci del 10% il primo e l'ultimo giorno della seconda settimana
+        var incassi2 = incassi1;
+        incassi2[0] = incassi2[0] * 10 / 100;
+        incassi2[6] = incassi2[6] * 10 / 100;
+        console.log("incassi settimana 2:", incassi2);
+
+        somma1 = somma2 = 0;
+        for(var i = 0; i < incassi1.length; i++) {
+            somma1 += incassi1[i];
+            somma2 += incassi2[i];
+        }
+        console.log("Media incassi settimana 1:", Math.round(somma1/incassi1.length));
+        console.log("Media incassi settimana 2:", Math.round(somma2/incassi2.length));
+        // media uguale alla settimana 2 perché incassi1 e incassi2 puntano allo stesso array
+
+        // Test con operatore spread (destrutturazione)
+        var incassi3 = [...incassi1]; // copia indipendente
+        incassi3[0] = incassi3[0] * 10 / 100; // riduci del 10% il primo giorno
+        incassi3[6] = incassi3[6] * 10 / 100; // riduci del 10% l'ultimo giorno
+        console.log("incassi settimana 3 (spread):", incassi3);
+
+        var somma3 = 0;
+        for(var i = 0; i < incassi3.length; i++) {
+            somma3 += incassi3[i];
+        }
+        console.log("Media incassi settimana 3:", Math.round(somma3/incassi3.length));
+
+    </script>
+</body>
+</html>
