@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andamento della classe 2</title>
+</head>
+<body>
+    <script>
+        function confrontaMedie(mediaPrimo, ...votiSecondo) {
+            let somma = 0;
+            for (let voto of votiSecondo) {
+                somma += voto;
+            }
+            const mediaSecondo = somma/votiSecondo.length;
+
+            let A, B;
+            if (mediaSecondo < 6) {
+                A = 1;
+                if (mediaSecondo < mediaPrimo) {
+                    B = 1;
+                } else {
+                    B = 0;
+                }
+            } else {
+                A = 0;
+                if (mediaSecondo < mediaPrimo) {
+                    B = 1;
+                } else {
+                    B = 0;
+                }
+            }
+
+            return [A, B];
+        }
+
+        function gestisciStudenti() {
+            
+            const studenti = [
+                { nome: "Anna", mediaPrimo: 7, votiSecondo: [6, 5, 7, 6] },
+                { nome: "Luca", mediaPrimo: 5.5, votiSecondo: [4, 5, 5] },
+                { nome: "Marco", mediaPrimo: 6, votiSecondo: [6, 6, 5] },
+                { nome: "Sara", mediaPrimo: 7, votiSecondo: [8, 7, 9] },
+            ];
+
+            const n = parseInt(prompt("Inserisci il numero di studenti: "));
+
+            for (let i = 0; i < n; i++) {
+                const nome = prompt("Inserisci il nome dello studente "+(i + 1)+":");
+                const mediaPrimo = parseFloat(prompt("Inserisci la media del primo quadrimestre di "+(nome)+":"));
+                const numVotiSecondo = parseInt(prompt("Inserisci quanti voti ha nel secondo quadrimestre " +(nome)+ ": "));
+                const votiSecondo = [];
+
+                for (let j = 0; j < numVotiSecondo; j++) {
+                    const voto = parseFloat(prompt("Inserisci il voto " +(j + 1)+" di"+(nome)+":"));
+                    votiSecondo.push(voto);
+                }
+
+                studenti.push({ nome, mediaPrimo, votiSecondo });
+            }
+
+            let contA = 0; 
+            let contB = 0; 
+            let contC = 0;
+            let contD = 0; 
+
+            for (let studente of studenti) {
+                const [A, B] = confrontaMedie(studente.mediaPrimo, ...studente.votiSecondo);
+
+                if (A == 1 && B == 0) {
+                    contA++;
+                } else if (A == 0 && B == 1) {
+                    contB++;
+                } else if (A == 1 && B == 1) {
+                    contC++;
+                } else if (A == 0 && B == 0) {
+                    contD++;
+                }
+            }
+
+            console.log("Studenti con la 2° media insufficiente:", contA);
+            console.log("Studenti con la 2° media insufficiente e inferiore alla 1°:", contB);
+            console.log("Studenti con la 2° media sufficiente ma inferiore alla 1°:", contC);
+            console.log("Studenti con la 2° media sufficiente e superiore alla 1°:", contD);
+        }
+
+        gestisciStudenti();
+    </script>
+</body>
+</html>
+
