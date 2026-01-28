@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione delle letture mensili del contatore</title>
+</head>
+<body>
+    <script>
+        const contatore = [
+            {nome:"cliente1",codice:"java",tariffa:100,letture:[10,17,18]},
+            {nome:"cliente2",codice:"javaScript",tariffa:200,letture:[10,17,18]},
+        ];
+        function aggiungi(n){
+            let nome = prompt("Inserisci il nome del cliente:")
+            let codice = prompt("Inserisci il codice: ") 
+            let tariffa = parentInt(prompt("inserisci la tariffa: "))
+            let numeroletture = parentInt(prompt("Inserisci le letture: "))
+        
+            let letture = new array(numeroletture)
+            for(let i = 0; i<numeroletture.length;i++){
+                letture[i]=parseInt(prompt("Inserisci le letture"))
+            }
+            contatore.push({nome:nome,codice:codice,tariffa:tariffa,letture:letture})
+        }
+        consol.log("Arry aggiornato")
+        consol.log(contatore)
+        
+        function calcolaConsumo(tariffa,...letture){
+            let totale = tariffa; 
+            for(let i = 0; i<letture.length;i++){
+                totale +=letture[i]
+            }
+            return totale;
+        }
+        let numeroClienti = parentInt(prompt("Inserisci il numero di clienti: "))
+        aggiungi(numeroClienti)
+        for (let i = 0; i<contatore.length;i++){
+             const totale = calcolaConsumo(contatore[i].tariffa,...contatore[i].letture)
+             consol.log("Totale di ",contatore[i].nome,":",totale)
+        }
+        
+    </script>
+</body>
+</html>
